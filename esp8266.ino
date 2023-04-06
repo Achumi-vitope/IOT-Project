@@ -97,7 +97,7 @@ void setup()
   WiFi.setSleepMode(WIFI_NONE_SLEEP);
   WiFi.persistent(true);
   while ( WiFi.status() != WL_CONNECTED ) {
-    delay ( 500 );
+    delay ( 300 );
     box.print(".");
     Serial.print("Connecting...");
   }
@@ -109,13 +109,13 @@ void setup()
 void loop()
 {
   timeClient.update();
+
+  
   // //displaying the time table
   getHours = timeClient.getHours();
   getMinutes = timeClient.getMinutes();
   getDays = timeClient.getDay();
-  Serial.print("\n" + getHours);
-  Serial.print("\n" + getMinutes);
-  Serial.print("\n" + getDays);
+  Serial.print(timeClient.getFormattedTime());
   condition();
 }
 
@@ -126,7 +126,7 @@ void display()
   {
     box.print(*next);
     Serial.print(*next);
-    delay(300);
+    delay(250);
     next++;
   }
 }
@@ -171,7 +171,7 @@ void condition()
 
 void currentPeriod()
 {
-  if(getHours == 8 && getMinutes >= 45)
+  if((getHours == 8 && getMinutes >= 45) || (getHours == 9 && getMinutes < 30))
     phase = 1;
   else if((getHours == 9 && getMinutes >= 30) || (getHours == 10 && getMinutes < 15))
     phase = 2;
@@ -344,90 +344,6 @@ void Friday()
         break;
       default:
       Message = noClass;
-        break;
-    }
-}
-}
-
-void Wednesday()
-{
-  switch(phase)
-    {
-      case 1:
-        Message = Wed[0];
-        break;
-      case 2:
-        Message = Wed[1];
-        break;
-      case 3:
-        Message = Wed[2];
-        break;
-      case 4:
-        Message = Wed[3];
-        break;
-      case 5:
-        Message = Wed[4];
-        break;
-      case 6:
-        Message = Wed[5];
-        break;
-      default:
-      Message = " BCA 4th Sem";
-        break;
-    }
-}
-void Thursday()
-{
-  switch(phase)
-    {
-      case 1:
-        Message = Thu[0];
-        break;
-      case 2:
-        Message = Thu[1];
-        break;
-      case 3:
-        Message = Thu[2];
-        break;
-      case 4:
-        Message = Thu[3];
-        break;
-      case 5:
-        Message = Thu[4];
-        break;
-      case 6:
-        Message = Thu[5];
-        break;
-      default:
-      Message = " BCA 4th Sem";
-        break;
-    }
-}
-
-void Friday()
-{
-    switch(phase)
-    {
-      case 1:
-        Message = Fri[0];
-        break;
-      case 2:
-        Message = Fri[1];
-        break;
-      case 3:
-        Message = Fri[2];
-        break;
-      case 4:
-        Message = Fri[3];
-        break;
-      case 5:
-        Message = Fri[4];
-        break;
-      case 6:
-        Message = Fri[5];
-        break;
-      default:
-      Message = " BCA 4th Sem";
         break;
     }
 }
