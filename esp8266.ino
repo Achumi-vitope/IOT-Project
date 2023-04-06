@@ -16,7 +16,7 @@
 #include <WiFiUdp.h>
 
 //Set up config:
-SPIDMD dmd(4,1);                
+SPIDMD dmd(1,1);                
 DMD_TextBox box(dmd,0, 0); //Can include x, y, width, and height parameters
 
 //Setting up time config
@@ -34,7 +34,7 @@ const char * Mon[] = {
   " Monday : 8:45AM to 9:30AM NET 404 and SWL 405 (Bidiyapati)",
   " Monday : 9:30AM to 10:15AM NET 404 and SWL 405 (Bidiyapati)",
   " Monday : 10:15AM to 11:00AM DMS 401 (Visato)",
-  " Monday : 11:00AM to 11:45AM Break",
+  " Monday : 11:00AM to 11:45AM Lunch Break :)",
   " Monday : 11:45AM to 12:30PM PPD 402 (Heulungdailie)",
   " Monday : 12:30PM to 1:15PM SWL 406 (Nepoleon)",
   };
@@ -43,7 +43,7 @@ const char * Tue[] = {
   " Tuesday : 8:45AM to 9:30AM DMS 401 (Visato)",
   " Tuesday : 9:30AM to 10:15AM NET 404 and SWL 405 (Bidiyapati)",
   " Tuesday : 10:15AM to 11:00AM SWL 406 (Nepoleon)",
-  " Tuesday : 11:00AM to 11:45AM Break",
+  " Tuesday : 11:00AM to 11:45AM Lunch Break :)",
   " Tuesday : 11:45AM to 12:30PM PPD 402 (Heulungdailie)",
   " Tuesday : 12:30PM to 1:15PM NIELIT (Abhigyan)",
 };
@@ -53,7 +53,7 @@ const char * Wed[] =
   " Wednesday : 8:45AM to 9:30AM NET 404 and SWL 405 (Bidiyapati)",
   " Wednesday : 9:30AM to 10:15AM NET 404 and SWL 405 (Bidiyapati)",
   " Wednesday : 10:15AM to 11:00AM SWL 406 (Nepoleon)",
-  " Wednesday : 11:00AM to 11:45AM Break",
+  " Wednesday : 11:00AM to 11:45AM Lunch Break :)",
   " Wednesday : 11:45PM to 12:30PM NIELIT (Abhigyan)",
   " Wednesday : 12:30PM to 1:15PM SAD 403 (Bidiyapati)"
 };
@@ -63,7 +63,7 @@ const char * Thu[] =
   " Thursday : 8:45AM to 9:30AM SAD 403 (Bidiyapati)",
   " Thursday : 9:30AM to 10:15AM DMS 401 (Visato)",
   " Thursday : 10:15AM to 11:00AM NET 404 (Bidiyapati)",
-  " Thursday : 11:00AM to 11:45AM Break",
+  " Thursday : 11:00AM to 11:45AM Lunch Break :)",
   " Thursday : 11:45PM to 12:30PM NIELIT (Abhigyan)",
   " Thursday : 12:30PM to 1:15PM SWL 406 (Nepoleon)"
 };
@@ -73,11 +73,12 @@ const char * Fri[] =
   " Friday : 8:45AM to 9:30AM NIELIT (Abhigyan)",
   " Friday : 9:30AM to 10:15AM NET 404 and SWL 405 (Bidiyapati)",
   " Friday : 10:15AM to 11:00AM NET 404 and SWL 405 (Bidiyapati)",
-  " Friday : 11:00AM to 11:45AM Break",
+  " Friday : 11:00AM to 11:45AM Lunch Break :)",
   " Friday : 11:45PM to 12:30PM PPD 402 (Heulungdailie)",
   " Friday : 12:30PM to 1:15PM SAD 403 (Bidiyapati)"
 };
 
+const char * noClass = " BCA 4th Semester :)";
 const char * Message;
 int getDays;
 int getMinutes;
@@ -180,7 +181,7 @@ void currentPeriod()
     phase = 4;
   else if(getHours == 11 && getMinutes >= 45 || (getHours == 12 && getMinutes < 30))
     phase = 5;
-  else if(getHours == 12 && getMinutes >= 30)
+  else if(getHours == 12 && getMinutes >= 30 || (getHours == 1 && getMinutes <= 15))
     phase = 6;
   else
     phase = 0;
@@ -205,7 +206,7 @@ void datas()
     Friday();
   }else
   {
-    Message = " BCA 4th Sem";
+    Message = noClass;
   }
   display();
 }
@@ -232,7 +233,7 @@ void Monday()
         Message = Mon[5];
         break;
       default:
-      Message = " BCA 4th Sem";
+      Message = noClass;
         break;
     }
 }
@@ -259,9 +260,93 @@ void Tuesday()
       case 6:
         Message = Tue[5];
       default:
-      Message = " BCA 4th Sem";
+      Message = noClass;
         break;
     }
+}
+
+void Wednesday()
+{
+  switch(phase)
+    {
+      case 1:
+        Message = Wed[0];
+        break;
+      case 2:
+        Message = Wed[1];
+        break;
+      case 3:
+        Message = Wed[2];
+        break;
+      case 4:
+        Message = Wed[3];
+        break;
+      case 5:
+        Message = Wed[4];
+        break;
+      case 6:
+        Message = Wed[5];
+        break;
+      default:
+      Message = noClass;
+        break;
+    }
+}
+void Thursday()
+{
+  switch(phase)
+    {
+      case 1:
+        Message = Thu[0];
+        break;
+      case 2:
+        Message = Thu[1];
+        break;
+      case 3:
+        Message = Thu[2];
+        break;
+      case 4:
+        Message = Thu[3];
+        break;
+      case 5:
+        Message = Thu[4];
+        break;
+      case 6:
+        Message = Thu[5];
+        break;
+      default:
+      Message = noClass;
+        break;
+    }
+}
+
+void Friday()
+{
+    switch(phase)
+    {
+      case 1:
+        Message = Fri[0];
+        break;
+      case 2:
+        Message = Fri[1];
+        break;
+      case 3:
+        Message = Fri[2];
+        break;
+      case 4:
+        Message = Fri[3];
+        break;
+      case 5:
+        Message = Fri[4];
+        break;
+      case 6:
+        Message = Fri[5];
+        break;
+      default:
+      Message = noClass;
+        break;
+    }
+}
 }
 
 void Wednesday()
