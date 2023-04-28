@@ -8,8 +8,13 @@
 
 # Installation
 
-Managers and Libraries
+Boards Managers and Libraries
 
-## [#000]()Lib
-  * DMD2 by Freetronics
+## Libraries
+  + DMD2 by Freetronics
+  + NTPClient by Fabrice Weinberg
+## Boards Manager
+  + Esp8266 by Esp8266
+
+
     
