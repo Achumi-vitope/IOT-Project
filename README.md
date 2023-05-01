@@ -16,5 +16,9 @@ Boards Managers and Libraries
 ## Boards Manager
   + Esp8266 by Esp8266
 
+## Tetso C Floor
+ + IP address : 192.168.13.11
+ +  Port: 8266
+
 
     
