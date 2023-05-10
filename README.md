@@ -18,7 +18,7 @@ Boards Managers and Libraries
   + Esp8266 by Esp8266
 ## Boards Manager URL
 + http://arduino.esp8266.com/stable/package_esp8266com_index.json
-+ + Installation guide: Open Arduino IDE, Goto- File<Preferences<(Copy the above link and paste it under 'Addditional boards manager URLs:..')  
++ Installation guide: Open Arduino IDE, Goto- File<Preferences<(Copy the above link and paste it under 'Addditional boards manager URLs:..')  
 ## Tetso C Floor
  + IP address : 192.168.13.11
  +  Port: 8266
