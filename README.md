@@ -13,7 +13,7 @@ Boards Managers and Libraries
 ## Libraries
   + DMD2 by Freetronics
   + NTPClient by Fabrice Weinberg
-  + ArduinoOTA
+  + ArduinoOTA by Arduino, Juraj Andrassy
 ## Boards Manager
   + Esp8266 by Esp8266
 
