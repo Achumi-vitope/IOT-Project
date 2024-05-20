@@ -24,8 +24,8 @@ WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "pool.ntp.org",19800);
 
 //Set Wifi credentials
-const char * SSID = "Tetso C Floor";
-const char * PASSWORD = "tetso@pass";
+const char * SSID = "";
+const char * PASSWORD = "";
 
 //Rountine
 //Improvement -- Instead of raw codding the Rountine arrays 5 times, just create arrays for Time, Subject, and Teacher and make adjustments accordingly
